@@ -5,22 +5,27 @@ const props = defineProps<{
 	placeholder: PlaceholderPart;
 	modelValue: string;
 }>();
-const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>();
+const emit = defineEmits<{
+	(e: 'update:modelValue', value: string): void;
+	(e: 'submit'): void;
+}>();
 </script>
 
 <template>
 	<section>
 		<p>{{ props.placeholder.description }}</p>
-		<input
-			type="text"
-			:value="props.modelValue"
-			@input="
-				emit(
-					'update:modelValue',
-					($event.target as HTMLInputElement).value
-				)
-			"
-		/>
+		<form @submit.prevent="emit('submit')">
+			<input
+				type="text"
+				:value="props.modelValue"
+				@input="
+					emit(
+						'update:modelValue',
+						($event.target as HTMLInputElement).value
+					)
+				"
+			/>
+		</form>
 	</section>
 </template>
 

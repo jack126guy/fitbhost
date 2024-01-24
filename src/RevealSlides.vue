@@ -7,6 +7,12 @@ import 'reveal.js/dist/theme/white.css';
 
 onMounted(() => {
 	void Reveal.initialize({ plugins: [RevealMarkdown] });
+	Reveal.addKeyBinding(
+		{ keyCode: 13, key: 'Enter', description: 'Next slide' },
+		() => {
+			Reveal.next();
+		}
+	);
 });
 </script>
 

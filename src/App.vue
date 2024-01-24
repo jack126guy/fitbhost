@@ -39,6 +39,7 @@ const filledStory = computed(() => {
 				:key="i"
 				v-model="f.filled"
 				:placeholder="f"
+				@submit="Reveal.next()"
 			/>
 			<FilledStory :story="filledStory" />
 		</template>
