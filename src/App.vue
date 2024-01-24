@@ -1,24 +1,26 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, nextTick } from 'vue';
 import RevealSlides from './RevealSlides.vue';
+import StoryLoader from './StoryLoader.vue';
 import PlaceholderInput from './PlaceholderInput.vue';
 import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
 import { FilledPlaceholder } from './types';
+import Reveal from 'reveal.js';
 
-const testStory = ref('There was a {{ noun }} who was very {{ adjective }}.');
-const parsedStory = computed(() => parseStory(testStory.value));
+const story = ref('');
+const parsedStory = computed(() => parseStory(story.value));
 const filledPlaceholders = ref<FilledPlaceholder[]>([]);
 
-watch(
-	parsedStory,
-	(s) => {
-		filledPlaceholders.value = s
-			.filter((p): p is PlaceholderPart => p.type === 'placeholder')
-			.map((p) => ({ ...p, filled: '' }));
-	},
-	{ immediate: true }
-);
+watch(parsedStory, (s) => {
+	filledPlaceholders.value = s
+		.filter((p): p is PlaceholderPart => p.type === 'placeholder')
+		.map((p) => ({ ...p, filled: '' }));
+	void nextTick(() => {
+		Reveal.sync();
+		Reveal.slide(1);
+	});
+});
 
 const filledStory = computed(() => {
 	let fi = 0;
@@ -30,12 +32,15 @@ const filledStory = computed(() => {
 
 <template>
 	<RevealSlides>
-		<PlaceholderInput
-			v-for="(f, i) in filledPlaceholders"
-			:key="i"
-			v-model="f.filled"
-			:placeholder="f"
-		/>
-		<FilledStory :story="filledStory" />
+		<StoryLoader v-model="story" />
+		<template v-if="story">
+			<PlaceholderInput
+				v-for="(f, i) in filledPlaceholders"
+				:key="i"
+				v-model="f.filled"
+				:placeholder="f"
+			/>
+			<FilledStory :story="filledStory" />
+		</template>
 	</RevealSlides>
 </template>
