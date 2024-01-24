@@ -15,6 +15,7 @@
 		"vue": "^3.3.11"
 	},
 	"devDependencies": {
+		"@fontsource/caveat": "^5.0.16",
 		"@types/reveal.js": "^4.4.8",
 		"@typescript-eslint/eslint-plugin": "^6.19.1",
 		"@typescript-eslint/parser": "^6.19.1",

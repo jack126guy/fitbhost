@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { TextPart } from 'storyfillup';
 import { FilledPlaceholder } from './types';
+import '@fontsource/caveat';
+
 const props = defineProps<{ story: (TextPart | FilledPlaceholder)[] }>();
 </script>
 
@@ -21,6 +23,6 @@ const props = defineProps<{ story: (TextPart | FilledPlaceholder)[] }>();
 
 <style scoped>
 .filled {
-	font-family: monospace;
+	font-family: Caveat;
 }
 </style>
