@@ -1,0 +1,4 @@
+/* Needed for Reveal.js to render with proper dimensions */
+#app {
+	height: 100%;
+}

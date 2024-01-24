@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
+import RevealSlides from './RevealSlides.vue';
 import PlaceholderInput from './PlaceholderInput.vue';
 import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
 import { FilledPlaceholder } from './types';
-import Reveal from 'reveal.js';
-import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/white.css';
 
 const testStory = ref('There was a {{ noun }} who was very {{ adjective }}.');
 const parsedStory = computed(() => parseStory(testStory.value));
@@ -29,14 +26,10 @@ const filledStory = computed(() => {
 		p.type === 'placeholder' ? filledPlaceholders.value[fi++] : p
 	);
 });
-
-onMounted(() => {
-	void new Reveal().initialize({ plugins: [RevealMarkdown] });
-});
 </script>
 
 <template>
-	<div class="slides">
+	<RevealSlides>
 		<PlaceholderInput
 			v-for="(f, i) in filledPlaceholders"
 			:key="i"
@@ -44,5 +37,5 @@ onMounted(() => {
 			:placeholder="f"
 		/>
 		<FilledStory :story="filledStory" />
-	</div>
+	</RevealSlides>
 </template>
