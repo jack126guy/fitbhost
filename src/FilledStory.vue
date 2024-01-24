@@ -21,6 +21,12 @@ const text = computed(() =>
 </template>
 
 <style scoped>
+section {
+	text-align: start;
+	height: 100%;
+	overflow-y: auto;
+}
+
 :deep(.filled) {
 	font-family: Caveat;
 }
