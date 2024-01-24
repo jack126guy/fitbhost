@@ -14,7 +14,9 @@ const props = defineProps<{ story: (TextPart | FilledPlaceholder)[] }>();
 				:key="i"
 				:class="{ filled: part.type === 'placeholder' }"
 				>{{
-					part.type === 'placeholder' ? part.filled : part.content
+					part.type === 'placeholder'
+						? part.filled || `(${part.description})`
+						: part.content
 				}}</span
 			>
 		</p>
