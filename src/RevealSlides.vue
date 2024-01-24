@@ -6,7 +6,7 @@ import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/white.css';
 
 onMounted(() => {
-	void new Reveal().initialize({ plugins: [RevealMarkdown] });
+	void Reveal.initialize({ plugins: [RevealMarkdown] });
 });
 </script>
 
