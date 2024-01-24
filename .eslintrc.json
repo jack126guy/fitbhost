@@ -1,0 +1,20 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:vue/vue3-recommended",
+		"plugin:@typescript-eslint/strict-type-checked",
+		"prettier"
+	],
+	"parser": "vue-eslint-parser",
+	"parserOptions": {
+		"parser": "@typescript-eslint/parser",
+		"project": true,
+		"extraFileExtensions": [".vue"],
+		"sourceType": "module"
+	}
+}
