@@ -5,6 +5,7 @@ import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
 import { FilledPlaceholder } from './types';
 import Reveal from 'reveal.js';
+import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/white.css';
 
@@ -30,7 +31,7 @@ const filledStory = computed(() => {
 });
 
 onMounted(() => {
-	void new Reveal().initialize();
+	void new Reveal().initialize({ plugins: [RevealMarkdown] });
 });
 </script>
 

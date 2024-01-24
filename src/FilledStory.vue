@@ -1,30 +1,27 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { TextPart } from 'storyfillup';
 import { FilledPlaceholder } from './types';
 import '@fontsource/caveat';
 
 const props = defineProps<{ story: (TextPart | FilledPlaceholder)[] }>();
+const text = computed(() =>
+	props.story
+		.map((part) =>
+			part.type === 'placeholder'
+				? `<span class="filled">${part.filled || '(' + part.description + ')'}</span>`
+				: part.content
+		)
+		.join('')
+);
 </script>
 
 <template>
-	<section>
-		<p>
-			<span
-				v-for="(part, i) in props.story"
-				:key="i"
-				:class="{ filled: part.type === 'placeholder' }"
-				>{{
-					part.type === 'placeholder'
-						? part.filled || `(${part.description})`
-						: part.content
-				}}</span
-			>
-		</p>
-	</section>
+	<section data-markdown>{{ text }}</section>
 </template>
 
 <style scoped>
-.filled {
+:deep(.filled) {
 	font-family: Caveat;
 }
 </style>
