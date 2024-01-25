@@ -31,6 +31,8 @@ section {
 }
 
 :deep(.filled) {
-	font-family: Caveat;
+	font-family: Caveat, cursive;
+	border-bottom: 0.1em solid;
+	padding: 0em 0.5em;
 }
 </style>
