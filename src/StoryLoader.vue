@@ -6,9 +6,10 @@ const emit = defineEmits<{ (e: 'load', value: string): void }>();
 const fileInput = ref<HTMLInputElement>(null!);
 
 async function loadFile() {
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const text = await fileInput.value.files![0].text();
-	emit('load', text);
+	const file = fileInput.value.files?.[0];
+	if (file) {
+		emit('load', await file.text());
+	}
 }
 </script>
 
