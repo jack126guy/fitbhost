@@ -6,6 +6,8 @@ import { FilledPlaceholder } from './types';
 import '@fontsource/caveat';
 
 const props = defineProps<{ story: (TextPart | FilledPlaceholder)[] }>();
+const emit = defineEmits<{ (e: 'newStory'): void }>();
+
 const text = computed(() => {
 	var md = props.story
 		.map((part) =>
@@ -19,14 +21,21 @@ const text = computed(() => {
 </script>
 
 <template>
-	<!-- eslint-disable-next-line vue/no-v-html -->
-	<section v-html="text"></section>
+	<section>
+		<!-- eslint-disable-next-line vue/no-v-html -->
+		<div class="story" v-html="text"></div>
+		<button @click="emit('newStory')">New Story</button>
+	</section>
 </template>
 
 <style scoped>
 section {
-	text-align: start;
 	height: 100%;
+}
+
+.story {
+	height: 100%;
+	text-align: start;
 	overflow-y: auto;
 }
 
@@ -34,5 +43,12 @@ section {
 	font-family: Caveat, cursive;
 	border-bottom: 0.1em solid;
 	padding: 0em 0.5em;
+}
+
+button {
+	font-size: 100%;
+	position: absolute;
+	bottom: 20px;
+	left: -250px;
 }
 </style>

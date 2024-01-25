@@ -33,6 +33,10 @@ function loadStory(loadedStory: string) {
 		Reveal.slide(1);
 	});
 }
+
+function returnToLoader() {
+	Reveal.slide(0);
+}
 </script>
 
 <template>
@@ -46,7 +50,7 @@ function loadStory(loadedStory: string) {
 				:placeholder="f"
 				@submit="Reveal.next()"
 			/>
-			<FilledStory :story="filledStory" />
+			<FilledStory :story="filledStory" @new-story="returnToLoader" />
 		</template>
 	</RevealSlides>
 </template>
