@@ -16,10 +16,6 @@ watch(parsedStory, (s) => {
 	filledPlaceholders.value = s
 		.filter((p): p is PlaceholderPart => p.type === 'placeholder')
 		.map((p) => ({ ...p, filled: '' }));
-	void nextTick(() => {
-		Reveal.sync();
-		Reveal.slide(1);
-	});
 });
 
 const filledStory = computed(() => {
@@ -28,11 +24,20 @@ const filledStory = computed(() => {
 		p.type === 'placeholder' ? filledPlaceholders.value[fi++] : p
 	);
 });
+
+function loadStory(loadedStory: string) {
+	story.value = ''; // Reset input state
+	story.value = loadedStory;
+	void nextTick(() => {
+		Reveal.sync();
+		Reveal.slide(1);
+	});
+}
 </script>
 
 <template>
 	<RevealSlides>
-		<StoryLoader v-model="story" />
+		<StoryLoader @load="loadStory" />
 		<template v-if="story">
 			<PlaceholderInput
 				v-for="(f, i) in filledPlaceholders"

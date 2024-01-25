@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>();
+const emit = defineEmits<{ (e: 'load', value: string): void }>();
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const fileInput = ref<HTMLInputElement>(null!);
 
 async function loadFile() {
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const text = await fileInput.value.files![0].text();
-	emit('update:modelValue', text);
+	emit('load', text);
 }
 </script>
 
