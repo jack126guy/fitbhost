@@ -16,6 +16,9 @@ watch(parsedStory, (s) => {
 	filledPlaceholders.value = s
 		.filter((p): p is PlaceholderPart => p.type === 'placeholder')
 		.map((p) => ({ ...p, filled: '' }));
+	void nextTick(() => {
+		Reveal.sync();
+	});
 });
 
 const filledStory = computed(() => {
@@ -29,13 +32,13 @@ function loadStory(loadedStory: string) {
 	story.value = ''; // Reset input state
 	story.value = loadedStory;
 	void nextTick(() => {
-		Reveal.sync();
 		Reveal.slide(1);
 	});
 }
 
-function returnToLoader() {
+function resetStory() {
 	Reveal.slide(0);
+	story.value = '';
 }
 </script>
 
@@ -50,7 +53,7 @@ function returnToLoader() {
 				:placeholder="f"
 				@submit="Reveal.next()"
 			/>
-			<FilledStory :story="filledStory" @new-story="returnToLoader" />
+			<FilledStory :story="filledStory" @new-story="resetStory" />
 		</template>
 	</RevealSlides>
 </template>
