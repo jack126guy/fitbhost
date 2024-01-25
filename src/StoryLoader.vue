@@ -14,7 +14,7 @@ async function loadFile() {
 
 <template>
 	<section>
-		<button @click="fileInput.click()">Load Story</button>
+		<button @click="fileInput.click()">Upload Story</button>
 		<input
 			ref="fileInput"
 			type="file"
