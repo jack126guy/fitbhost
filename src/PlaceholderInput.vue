@@ -33,10 +33,4 @@ const emit = defineEmits<{
 p {
 	font-size: 300%;
 }
-
-input {
-	font-size: 200%;
-	width: 100%;
-	border-width: 5px;
-}
 </style>
