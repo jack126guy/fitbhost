@@ -13,24 +13,41 @@ const emit = defineEmits<{
 
 <template>
 	<section>
-		<p>{{ props.placeholder.description }}</p>
 		<form @submit.prevent="emit('submit')">
-			<input
-				type="text"
-				:value="props.modelValue"
-				@input="
-					emit(
-						'update:modelValue',
-						($event.target as HTMLInputElement).value
-					)
-				"
-			/>
+			<label>
+				{{ props.placeholder.description }}
+				<input
+					type="text"
+					:value="props.modelValue"
+					@input="
+						emit(
+							'update:modelValue',
+							($event.target as HTMLInputElement).value
+						)
+					"
+				/>
+			</label>
 		</form>
 	</section>
 </template>
 
 <style scoped>
-p {
+label {
 	font-size: 300%;
+}
+
+input[type='text'] {
+	font-size: 50%;
+	width: 100%;
+	padding: 0.1em;
+	border: 0.1em solid var(--r-main-color);
+	background: transparent;
+	color: inherit;
+}
+
+input[type='text']:focus {
+	border-color: var(--r-link-color);
+	box-shadow: 0em 0em 0.2em var(--r-link-color);
+	outline: none;
 }
 </style>

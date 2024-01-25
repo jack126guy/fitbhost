@@ -3,21 +3,6 @@
 	height: 100%;
 }
 
-input[type='text'] {
-	font-size: 200%;
-	width: 100%;
-	padding: 0.1em;
-	border: 0.1em solid var(--r-main-color);
-	background: transparent;
-	color: inherit;
-}
-
-input[type='text']:focus {
-	border-color: var(--r-link-color);
-	box-shadow: 0em 0em 0.2em var(--r-link-color);
-	outline: none;
-}
-
 button {
 	font-size: 100%;
 	border: none;
