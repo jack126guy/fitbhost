@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue';
 import { PlaceholderPart } from 'storyfillup';
 
 const props = defineProps<{
 	placeholder: PlaceholderPart;
 	modelValue: string;
+	isCurrent: boolean;
 }>();
 const emit = defineEmits<{
 	(e: 'update:modelValue', value: string): void;
 	(e: 'submit'): void;
 }>();
+
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const textInput = ref<HTMLElement>(null!);
+
+watch(
+	() => props.isCurrent,
+	(c) => {
+		if (c) {
+			textInput.value.focus();
+		}
+	}
+);
 </script>
 
 <template>
@@ -17,6 +31,7 @@ const emit = defineEmits<{
 			<label>
 				{{ props.placeholder.description }}
 				<input
+					ref="textInput"
 					type="text"
 					:value="props.modelValue"
 					@input="

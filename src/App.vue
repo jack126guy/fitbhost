@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, watch, nextTick } from 'vue';
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue';
 import RevealSlides from './RevealSlides.vue';
 import StoryLoader from './StoryLoader.vue';
 import PlaceholderInput from './PlaceholderInput.vue';
 import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
-import { FilledPlaceholder } from './types';
+import { FilledPlaceholder, RevealSlideChangedEvent } from './types';
 import Reveal from 'reveal.js';
 
 const story = ref('');
@@ -39,6 +39,20 @@ function resetStory() {
 	Reveal.slide(0);
 	story.value = '';
 }
+
+const currentSlide = ref(0);
+
+function updateCurrentSlide(e: Event) {
+	currentSlide.value = (e as RevealSlideChangedEvent).indexh;
+}
+
+onMounted(() => {
+	Reveal.on('slidechanged', updateCurrentSlide);
+});
+
+onUnmounted(() => {
+	Reveal.off('slidechanged', updateCurrentSlide);
+});
 </script>
 
 <template>
@@ -50,6 +64,7 @@ function resetStory() {
 				:key="i"
 				v-model="f.filled"
 				:placeholder="f"
+				:is-current="currentSlide === i + 1"
 				@submit="Reveal.next()"
 			/>
 			<FilledStory :story="filledStory" @new-story="resetStory" />
