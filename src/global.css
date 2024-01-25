@@ -17,3 +17,18 @@ input[type='text']:focus {
 	box-shadow: 0em 0em 0.2em var(--r-link-color);
 	outline: none;
 }
+
+button {
+	border: none;
+	padding: 0.25em;
+	background-color: var(--r-link-color);
+	color: black;
+	cursor: pointer;
+}
+
+button:focus,
+button:hover {
+	box-shadow: 0em 0em 0.2em var(--r-link-color-hover);
+	background-color: var(--r-link-color-hover);
+	outline: none;
+}
