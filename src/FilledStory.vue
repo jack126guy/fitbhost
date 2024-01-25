@@ -46,7 +46,6 @@ section {
 }
 
 button {
-	font-size: 100%;
 	position: absolute;
 	bottom: 20px;
 	left: -250px;

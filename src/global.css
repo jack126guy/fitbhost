@@ -19,7 +19,9 @@ input[type='text']:focus {
 }
 
 button {
+	font-size: 100%;
 	border: none;
+	margin: 0.25em;
 	padding: 0.25em;
 	background-color: var(--r-link-color);
 	color: black;
