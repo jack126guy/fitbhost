@@ -6,13 +6,11 @@ import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/white.css';
 
 onMounted(() => {
-	void Reveal.initialize({ plugins: [RevealMarkdown] });
-	Reveal.addKeyBinding(
-		{ keyCode: 13, key: 'Enter', description: 'Next slide' },
-		() => {
-			Reveal.next();
-		}
-	);
+	void Reveal.initialize({
+		plugins: [RevealMarkdown],
+		// Don't capture up and down arrow keys to allow scrolling filled story
+		keyboardCondition: (e) => e.keyCode !== 38 && e.keyCode !== 40,
+	});
 });
 </script>
 
