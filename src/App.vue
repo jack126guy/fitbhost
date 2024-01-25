@@ -29,7 +29,6 @@ const filledStory = computed(() => {
 });
 
 function loadStory(loadedStory: string) {
-	story.value = ''; // Reset input state
 	story.value = loadedStory;
 	void nextTick(() => {
 		Reveal.slide(1);
