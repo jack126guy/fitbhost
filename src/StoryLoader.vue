@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 
 const emit = defineEmits<{ (e: 'load', value: string): void }>();
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const fileInput = ref<HTMLInputElement>(null!);
+
+const fileInput = ref(null as unknown as HTMLInputElement);
 
 async function loadFile() {
 	const file = fileInput.value.files?.[0];

@@ -12,8 +12,7 @@ const emit = defineEmits<{
 	(e: 'submit'): void;
 }>();
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const textInput = ref<HTMLElement>(null!);
+const textInput = ref(null as unknown as HTMLElement);
 
 watch(
 	() => props.isCurrent,
