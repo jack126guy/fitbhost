@@ -5,7 +5,7 @@ import StoryLoader from './StoryLoader.vue';
 import PlaceholderInput from './PlaceholderInput.vue';
 import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
-import { FilledPlaceholder, RevealSlideChangedEvent } from './types';
+import { FilledPlaceholder } from './types';
 import Reveal from 'reveal.js';
 
 const story = ref('');
@@ -41,6 +41,10 @@ function resetStory() {
 }
 
 const currentSlide = ref(0);
+
+interface RevealSlideChangedEvent extends Event {
+	indexh: number;
+}
 
 function updateCurrentSlide(e: Event) {
 	currentSlide.value = (e as RevealSlideChangedEvent).indexh;
