@@ -17,7 +17,7 @@ async function loadFile() {
 	<section>
 		<h1>Instructions</h1>
 		<ol>
-			<li>Upload a story (.md, .txt)</li>
+			<li>Upload a story (.md/.txt file)</li>
 			<li>Fill in each blank (press Enter to go to the next one)</li>
 			<li>At the end, read the story</li>
 		</ol>
