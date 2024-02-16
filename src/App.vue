@@ -6,7 +6,7 @@ import PlaceholderInput from './PlaceholderInput.vue';
 import StoryPrologue from './StoryPrologue.vue';
 import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
-import { FilledPlaceholder } from './types';
+import { FilledPlaceholder } from './filled-placeholder';
 import Reveal from 'reveal.js';
 
 const story = ref('');

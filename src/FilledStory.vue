@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { TextPart } from 'storyfillup';
 import { marked } from 'marked';
-import { FilledPlaceholder } from './types';
+import { FilledPlaceholder } from './filled-placeholder';
 import '@fontsource/caveat';
 
 const props = defineProps<{ story: (TextPart | FilledPlaceholder)[] }>();
