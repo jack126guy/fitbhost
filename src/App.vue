@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue';
 import RevealSlides from './RevealSlides.vue';
 import StoryLoader from './StoryLoader.vue';
 import PlaceholderInput from './PlaceholderInput.vue';
+import StoryPrologue from './StoryPrologue.vue';
 import FilledStory from './FilledStory.vue';
 import { parse as parseStory, PlaceholderPart } from 'storyfillup';
 import { FilledPlaceholder } from './types';
@@ -71,6 +72,7 @@ onUnmounted(() => {
 				:is-current="currentSlide === i + 1"
 				@submit="Reveal.next()"
 			/>
+			<StoryPrologue @show-story="Reveal.next()" />
 			<FilledStory :story="filledStory" @new-story="resetStory" />
 		</template>
 	</RevealSlides>
