@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { PlaceholderPart } from 'storyfillup';
+import { autodefine } from './autodefine';
 
 const props = defineProps<{
 	placeholder: PlaceholderPart;
@@ -13,6 +14,9 @@ const emit = defineEmits<{
 }>();
 
 const textInput = ref(null as unknown as HTMLElement);
+const autodefineDefinitions = computed(() => {
+	return autodefine(props.placeholder.description);
+});
 
 watch(
 	() => props.isCurrent,
@@ -41,6 +45,17 @@ watch(
 					"
 				/>
 			</label>
+			<dl>
+				<template
+					v-for="(
+						{ keyword, definition }, i
+					) in autodefineDefinitions"
+					:key="i"
+				>
+					<dt>{{ keyword }}</dt>
+					<dd>{{ definition }}</dd>
+				</template>
+			</dl>
 		</form>
 	</section>
 </template>
@@ -63,5 +78,19 @@ input[type='text']:focus {
 	border-color: var(--r-link-color);
 	box-shadow: 0em 0em 0.2em var(--r-link-color);
 	outline: none;
+}
+
+dl {
+	margin: 0em;
+}
+
+dt,
+dd {
+	display: inline;
+}
+
+dd:after {
+	display: block;
+	content: '';
 }
 </style>
