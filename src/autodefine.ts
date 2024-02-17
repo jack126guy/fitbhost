@@ -22,4 +22,6 @@ const englishGrammarKeywords: Record<string, string> = {
 	verb: 'Action or state of being',
 	adjective: 'Description of a thing (noun)',
 	adverb: 'Description of an action (verb)',
+	onomatopoeia: 'Represents a sound ("pow", "woof")',
+	superlative: 'Represents an extreme, often ends in -est',
 };
