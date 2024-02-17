@@ -20,8 +20,8 @@ export interface KeywordDefinition {
 const englishGrammarKeywords: Record<string, string> = {
 	noun: 'Person, place, or thing',
 	verb: 'Action or state of being',
-	adjective: 'Description of a thing (noun)',
-	adverb: 'Description of an action (verb)',
+	adjective: 'Describes a thing (noun)',
+	adverb: 'Describes an action (verb), often ends in -ly',
 	onomatopoeia: 'Represents a sound ("pow", "woof")',
 	superlative: 'Represents an extreme, often ends in -est',
 };
