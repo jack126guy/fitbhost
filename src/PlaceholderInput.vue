@@ -46,11 +46,15 @@ watch(
 				/>
 			</label>
 			<dl>
+				<!--
+				_i has an underscore because vue-tsc reports it as unused
+				Reference: https://github.com/vuejs/language-tools/issues/329
+				-->
 				<template
 					v-for="(
-						{ keyword, definition }, i
+						{ keyword, definition }, _i
 					) in autodefineDefinitions"
-					:key="i"
+					:key="_i"
 				>
 					<dt>{{ keyword }}</dt>
 					<dd>{{ definition }}</dd>
