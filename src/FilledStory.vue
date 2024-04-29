@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { TextPart } from 'storyfillup';
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import { FilledPlaceholder } from './filled-placeholder';
 import '@fontsource/caveat';
 
@@ -16,7 +17,7 @@ const text = computed(() => {
 				: part.content
 		)
 		.join('');
-	return marked.parse(md);
+	return DOMPurify.sanitize(marked.parse(md) as string);
 });
 </script>
 
