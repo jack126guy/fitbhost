@@ -41,6 +41,7 @@ To lint and format the code, run `npm run lint`.
 * [Marked](https://marked.js.org/) (Markdown parser)
 * [Reveal.js](https://revealjs.com/) (presentation framework)
 * [StoryFillup](https://github.com/jack126guy/storyfillup) (markup parser)
+* [DOMPurify](https://github.com/cure53/DOMPurify) (markup sanitizer)
 * [Vue](https://vuejs.org/) (component framework)
 
 ## License
