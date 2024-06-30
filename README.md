@@ -14,7 +14,7 @@ For example:
 This is an {{ adjective }} example of a {{ noun }}.
 ```
 
-(Refer to the [StoryFillup](https://github.com/jack126guy/storyfillup) page for technical information on the format.)
+(Refer to the [StoryFillup](https://github.com/jack126guy/storyfillup) page for technical information on the format. Note that special codes are ignored in this tool.)
 
 Stories can also contain Markdown:
 
