@@ -8,10 +8,11 @@ import typescriptEslintParser from '@typescript-eslint/parser';
 export default [
 	js.configs.recommended,
 	...vue.configs['flat/recommended'],
-	...typescript.configs.strictTypeChecked.map((config) => ({
-		...config,
-		ignores: ['**/*.js'],
-	})),
+	...typescript.configs.strictTypeChecked,
+	{
+		...typescript.configs.disableTypeChecked,
+		files: ['**/*.js'],
+	},
 	prettier,
 	{
 		files: ['**/*.ts', '**/*.vue'],
