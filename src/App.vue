@@ -52,11 +52,11 @@ function updateCurrentSlide(e: Event) {
 }
 
 onMounted(() => {
-	Reveal.on('slidechanged', updateCurrentSlide);
+	Reveal.on('slidetransitionend', updateCurrentSlide);
 });
 
 onUnmounted(() => {
-	Reveal.off('slidechanged', updateCurrentSlide);
+	Reveal.off('slidetransitionend', updateCurrentSlide);
 });
 </script>
 
