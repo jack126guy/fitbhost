@@ -9,7 +9,7 @@ onMounted(() => {
 	void Reveal.initialize({
 		plugins: [RevealMarkdown],
 		// Don't capture up and down arrow keys to allow scrolling filled story
-		keyboardCondition: (e) => e.keyCode !== 38 && e.keyCode !== 40,
+		keyboardCondition: (e) => e.key !== 'ArrowUp' && e.key !== 'ArrowDown',
 	});
 });
 </script>
